@@ -9,7 +9,7 @@ pipeline {
 		stage('Checkout') {
 			steps {
 				script {
-					def gitRepoUrl = 'https://github.com/frankkwabenaaboagye/accelerator-IL.git'
+					def gitRepoUrl = 'https://github.com/dacostafrankaboagye/rocket-app.git'
 
                     checkout([$class: 'GitSCM',
                         branches: [[name: '*/main']],
@@ -24,12 +24,10 @@ pipeline {
 			steps {
 				//sh './mvnw clean package'
 				sh '''
-                ls
-                cd wk-4/CICDwithJenkins/rocket-app
-                echo "changed directory "
                	ls
                	mvn clean package
-                echo "DONE WITH THE BUILD"
+               	echo "=============================="
+                echo "============DONE WITH THE BUILD"
                 '''
             }
         }
@@ -39,11 +37,9 @@ pipeline {
 				sh '''
 				echo "LISTING THE CONTENT OF THE DIR"
 				ls
-				cd wk-4/CICDwithJenkins/rocket-app
-                echo "changed directory "
-               	ls
                	mvn test
-				echo "DONE WIH THE TEST"
+               	echo "=============================="
+				echo "=============DONE WIH THE TEST"
 				'''
             }
         }
